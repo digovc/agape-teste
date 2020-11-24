@@ -1,16 +1,4 @@
-<style>
-    .container {
-        display: grid;
-        height: 100vh;
-    }
-
-    .image {
-        background-image: url('/static/images/agape.png');
-        height: 75px;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-</style>
+<link rel="stylesheet" href="/static/css/splash.css">
 
 <div class="container">
     <div class="image"></div>

@@ -1,0 +1,12 @@
+.container {
+	display: grid;
+	height: 100vh;
+	max-width: 350px;
+}
+
+.image {
+	background-image: url("/static/images/agape.png");
+	height: 75px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
