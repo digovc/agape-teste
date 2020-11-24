@@ -1,0 +1,42 @@
+Parte 1. 
+Desenvolvimento de uma simples aplicação Web:
+Para gerenciamento de usuários (Nome: string, Email: string, Login: string, Senha: string, Status: boolean, Admin: boolean).
+
+
+Telas:
+
+- Login de usuário;
+- Recuperar senha de usuário;
+- Envio de recuperação de senha por e-mail utilizar smtp;
+- Tela de redefinição de senha;
+
+- Listagem de usuários com paginação e possibilidade de pelos campos,
+- Formulário para Novo registro e Edição de registro;
+
+Usar tecnologias do requisito da vaga:
+Codeigniter 3, HMVC é um diferencial,
+ActiveRecord,
+Bootstrap 3 ou superior, (avaliamos utilização correta do css, html e js, não avaliamos o design),
+MySQL
+
+Regras
+- Nenhum campo pode ser vázio,
+- Segurança:
+-- Nenhum usuário sem autenticação pode acessar as telas de listagem e formulário de novo e edição.
+-- Usuários logados e que sejam "Admin == True" podem listar e modificar todos os usuários,
+-- Usuários logados e que NÂO sejam Admin, "Admin == false", só podem listar o e modificar o próprio usuário, não pode cadastrar outros.
+
+
+Parte 2.
+
+Disponibilizar a comunicação dos recursos via API REST, 
+com uso de passagem e recebimento em formato JSON, 
+para permitir a aplicativos possam realizar as mesmas funcionalidades da versão web.
+
+
+Ao fim preciso que me envie os fontes de ambas versões, web e doc da api, e um vídeo do app em debug demonstrando ações em todas telas funcionando.
+
+
+
+Atenciosamente
+Franklin
