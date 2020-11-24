@@ -4,8 +4,14 @@ CREATE TABLE account (
     login VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
-    enabled BOOL,
-    admin BOOL
+    isEnabled BOOL,
+    isAdmin BOOL
+);
+
+CREATE TABLE session (
+    accountId INT(6) UNSIGNED,
+    token VARCHAR(32) NOT NULL,
+    isAdmin BOOL
 );
 
 INSERT INTO

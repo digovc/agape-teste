@@ -7,6 +7,6 @@ class AccountModel extends CI_Model
     public $email;
     public $login;
     public $password;
-    public $enabled;
-    public $admin;
+    public $isEnabled;
+    public $isAdmin;
 }
