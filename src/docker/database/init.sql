@@ -20,8 +20,8 @@ INSERT INTO
         login,
         email,
         password,
-        enabled,
-        admin
+        isEnabled,
+        isAdmin
     )
 VALUES
     (

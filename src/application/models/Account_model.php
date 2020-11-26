@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class AccountModel extends CI_Model
+class Account_model extends CI_Model
 {
     public $name;
     public $email;

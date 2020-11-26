@@ -5,5 +5,7 @@ class Session extends CI_Controller
 {
     public function login()
     {
+        $this->load->model('Session_model', 'session_model');
+        $this->session_model->login();
     }
 }
