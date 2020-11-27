@@ -8,4 +8,10 @@ class User extends CI_Controller
         $this->load->model('account_model');
         $this->account_model->retrieve_users();
     }
+    
+    public function save()
+    {
+        $this->load->model('account_model');
+        $this->account_model->save();
+    }
 }

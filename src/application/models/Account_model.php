@@ -42,6 +42,59 @@ class Account_model extends Model_base
         }
     }
 
+    public function save()
+    {
+        $request = $this->get_json_request();
+
+        $this->load->database();
+        $this->db->where('token', $request->token);
+        $query = $this->db->get('session');
+        $rows = $query->result();
+
+        if (is_null($rows) || count($rows) < 1) {
+            $this->error('Invalid token.');
+        }
+
+        if (is_null($request->token)) {
+            $this->error('Invalid token.');
+        }
+
+        if (is_null($request->user)) {
+            $this->error('Invalid request.');
+        }
+
+        if (is_null($request->user->name)) {
+            $this->error('Invalid name.');
+        }
+
+        if (is_null($request->user->login)) {
+            $this->error('Invalid login.');
+        }
+
+        if (is_null($request->user->email)) {
+            $this->error('Invalid email.');
+        }
+
+        if (is_null($request->user->password)) {
+            $this->error('Invalid password.');
+        }
+
+        $sessionRow = $rows[0];
+
+        if (!$sessionRow->isAdmin && $request->user->id != $sessionRow->accountId) {
+            $this->error('No admin users only change your account.');
+        }
+
+        if ($request->user->id > 0) {
+            $this->db->replace('account', $request->user);
+        } else {
+            $this->db->insert('account', $request->user);
+        }
+
+        $response = array('ok' => true, 'message' => 'User salved.');
+        $this->send_json_response($response);
+    }
+
     private function retrieve_users_with_admin($request)
     {
         $limit = 10;
