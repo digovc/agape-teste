@@ -18,8 +18,6 @@
                 Recuperar senha
             </button>
         </div>
-
-        </form>
     </div>
 </div>
 

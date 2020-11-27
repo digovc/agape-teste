@@ -16,8 +16,6 @@
                 Cancelar
             </button>
         </div>
-
-        </form>
     </div>
 </div>
 
