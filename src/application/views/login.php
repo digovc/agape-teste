@@ -6,15 +6,15 @@
         <br />
 
         <div>
-            <input type="email" class="form-control" placeholder="Email" name="email" />
+            <input id="loginInput" type="text" class="form-control" placeholder="Login" />
             <br />
-            <input type="password" class="form-control" placeholder="Senha" name="password" />
+            <input id="passwordInput" type="password" class="form-control" placeholder="Senha" />
+            <br />
 
-            <br />
-            <button type="submit" class="btn btn-default" click="login()">
+            <button class="btn btn-default" click="login()">
                 Entrar
             </button>
-            <button type="button" class="btn btn-default">
+            <button class="btn btn-default" click="goToRecovery()">
                 Recuperar senha
             </button>
         </div>

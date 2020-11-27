@@ -1,6 +1,6 @@
 function goToLogin() {
 	setTimeout(() => {
-		location.pathname = "/index.php/login";
+		location.pathname = "/index.php/views/login";
 	}, 1500);
 }
 
