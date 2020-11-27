@@ -8,9 +8,14 @@ CREATE TABLE account (
     isAdmin BOOL
 );
 
+CREATE TABLE recovery (
+    accountId INT(6) UNSIGNED,
+    token VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE session (
     accountId INT(6) UNSIGNED,
-    token VARCHAR(32) NOT NULL,
+    token VARCHAR(100) NOT NULL,
     isAdmin BOOL
 );
 
