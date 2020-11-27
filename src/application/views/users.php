@@ -15,7 +15,6 @@
                     <th>Ativo</th>
                     <th>Administrador</th>
                     <th>Editar</th>
-                    <th>Remover</th>
                 </tr>
             </thead>
             <tbody id="tbody">

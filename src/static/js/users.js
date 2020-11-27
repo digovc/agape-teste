@@ -1,25 +1,24 @@
-const query = new URLSearchParams(window.location.search);
+const query = new URLSearchParams(location.search);
 const index = query.get("index") ?? 0;
 
-function addUser(user) {
+function addAccount(account) {
 	const tr = document.createElement("tr");
-	addUserColumn(tr, user.name);
-	addUserColumn(tr, user.login);
-	addUserColumn(tr, user.email);
-	addUserColumn(tr, user.isEnabled);
-	addUserColumn(tr, user.isAdmin);
-	addUserColumnAction(tr, "Editar", () => alterUser(user.id));
-	addUserColumnAction(tr, "Remover", () => removeUser(user.id));
+	addAccountColumn(tr, account.name);
+	addAccountColumn(tr, account.login);
+	addAccountColumn(tr, account.email);
+	addAccountColumn(tr, account.isEnabled);
+	addAccountColumn(tr, account.isAdmin);
+	addAccountColumnAction(tr, "Editar", () => alterAccount(account.id));
 	$(".tbody").appendChild(tr);
 }
 
-function addUserColumn(tr, value) {
+function addAccountColumn(tr, value) {
 	const td = document.createElement("td");
 	td.innerText = value;
 	tr.appendChild(td);
 }
 
-function addUserColumnAction(tr, title, callback) {
+function addAccountColumnAction(tr, title, callback) {
 	const button = document.createElement("button");
 	button.classList.appendChild("btn");
 	button.classList.appendChild("btn-default");
@@ -33,8 +32,8 @@ function addUserColumnAction(tr, title, callback) {
 	tr.appendChild(td);
 }
 
-function alterUser(userId) {
-	location.pathname = "/index.php/views/user?id=" + userId;
+function alterAccount(accountId) {
+	location.pathname = "/index.php/views/user?id=" + accountId;
 }
 
 function initPage() {
@@ -66,8 +65,6 @@ function previousPage() {
 	}
 }
 
-function removeUser(userId) {}
-
 function retrieveUsers(index) {
 	const url = "/api/user/retrieve_users";
 	const token = sessionStorage.getItem("token");
@@ -88,7 +85,7 @@ function retrieveUsers(index) {
 function retrieveUsersCb(response) {
 	if (response.ok) {
 		const users = response.users;
-		users.forEach((user) => addUser(user));
+		users.forEach((user) => addAccount(user));
 	}
 }
 

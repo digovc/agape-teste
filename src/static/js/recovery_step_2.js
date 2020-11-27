@@ -1,5 +1,5 @@
 function changePasword() {
-	const query = new URLSearchParams(window.location.search);
+	const query = new URLSearchParams(location.search);
 	const token = query.get("token");
 
 	if (token == null || token.length < 1) {

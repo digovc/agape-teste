@@ -6,22 +6,22 @@
         <br />
 
         <div>
-            <input type="text" class="form-control" placeholder="Nome" name="name" />
+            <input id="nameInput" type="text" class="form-control" placeholder="Nome" />
             <br />
-            <input type="text" class="form-control" placeholder="Login" name="login" />
+            <input id="loginInput" type="text" class="form-control" placeholder="Login" />
             <br />
-            <input type="email" class="form-control" placeholder="Email" name="email" />
+            <input id="emailInput" type="email" class="form-control" placeholder="Email" />
             <br />
-            <input type="checkbox" class="form-control" placeholder="Ativo" name="isEnabled" />
+            <input id="isEnabledInput" type="checkbox" class="form-control" placeholder="Ativo" />
             <br />
-            <input type="checkbox" class="form-control" placeholder="Administrador" name="isAdmin" />
+            <input id="isAdminInput" type="checkbox" class="form-control" placeholder="Administrador" />
             <br />
 
-            <br />
             <button type="submit" class="btn btn-default" click="save()">
                 Salvar
             </button>
-            <button type="button" class="btn btn-default">
+
+            <button type="button" class="btn btn-default" click="goToUsers()">
                 Cancelar
             </button>
         </div>
