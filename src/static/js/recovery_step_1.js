@@ -16,10 +16,6 @@ function recovery() {
 
 function receoveryCb(response) {
 	if (response.ok) {
-        alert('Instruções foram enviadas para o seu email.');
+		alert("Instruções foram enviadas para o seu email.");
 	}
-}
-
-function goToLogin() {
-	location.pathname = "/index.php/views/login";
 }

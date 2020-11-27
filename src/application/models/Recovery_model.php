@@ -75,7 +75,7 @@ class Recovery_model extends Model_base
         $this->email->to($accountRow->email);
 
         $line1 = '<div>Seu login é <b>' . $accountRow->login . '</b>.</div>';
-        $line2 = '<div>Para recuperar a sua senha <a href="http://agapa_teste.ddns.net/index.php/recovery?token=' . $token . '">clique aqui</a>.</div>';
+        $line2 = '<div>Para recuperar a sua senha <a href="http://agapa_teste.ddns.net/index.php/views/recovery_step_2?token=' . $token . '">clique aqui</a>.</div>';
 
         $this->email->subject('Recuperação de senha.');
         $this->email->message($line1 . $line2);

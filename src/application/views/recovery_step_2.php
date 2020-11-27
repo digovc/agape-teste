@@ -6,13 +6,13 @@
         <br />
 
         <div>
-            <input type="password" class="form-control" placeholder="Nova senha" name="password" />
+            <input id="passwordInput" type="password" class="form-control" placeholder="Nova senha" />
 
             <br />
-            <button type="submit" class="btn btn-default" click="changePasword()">
+            <button class="btn btn-default" click="changePasword()">
                 Salvar
             </button>
-            <button type="button" class="btn btn-default" click="cancel()">
+            <button class="btn btn-default" click="goToLogin()">
                 Cancelar
             </button>
         </div>
