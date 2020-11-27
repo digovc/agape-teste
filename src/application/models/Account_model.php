@@ -12,6 +12,44 @@ class Account_model extends Model_base
     public $isEnabled;
     public $isAdmin;
 
+    public function retrieve_user()
+    {
+        $request = $this->get_json_request();
+
+        if (is_null($request->token)) {
+            $this->error('Invalid token.');
+        }
+
+        if ($request->accountId < 1) {
+            $this->error('Invalid user.');
+        }
+
+        $this->load->database();
+        $this->db->where('token', $request->token);
+        $query = $this->db->get('session');
+        $rows = $query->result();
+
+        if (is_null($rows) || count($rows) < 1) {
+            $this->error('Invalid token.');
+        }
+
+        $sessionRow = $rows[0];
+
+        if ($sessionRow->isAdmin || $sessionRow->accountId == $request->accountId) {
+            $this->db->where('id', $sessionRow->accountId);
+            $query = $this->db->get('account');
+            $rows = $query->result();
+
+            if (is_null($rows) || count($rows) < 1) {
+                $this->error('Invalid account.');
+            }
+
+            $accountRow = $rows[0];
+            $response = array('ok' => true, 'account' => $accountRow);
+            $this->send_json_response($response);
+        }
+    }
+
     public function retrieve_users()
     {
         $request = $this->get_json_request();
@@ -107,7 +145,7 @@ class Account_model extends Model_base
 
     private function retrieve_only_self_user($sessionRow)
     {
-        $this->db->where('id', $sessionRow->adminId);
+        $this->db->where('id', $sessionRow->accountId);
         $query = $this->db->get('account');
         $rows = $query->result();
 
