@@ -1,3 +1,6 @@
+const query = new URLSearchParams(window.location.search);
+const index = query.get("index") ?? 0;
+
 function addUser(user) {
 	const tr = document.createElement("tr");
 	addUserColumn(tr, user.name);
@@ -30,16 +33,42 @@ function addUserColumnAction(tr, title, callback) {
 	tr.appendChild(td);
 }
 
-function alterUser(userId) {}
+function alterUser(userId) {
+	location.pathname = "/index.php/views/user?id=" + userId;
+}
+
+function initPage() {
+	if (index == 0) {
+		$(".previousButton").hide();
+	}
+
+	retrieveUsers(index);
+}
 
 function logoff() {
 	sessionStorage.removeItem("token");
 	goToLogin();
 }
 
+function newUser() {
+	location.pathname = "/index.php/views/user?id=new";
+}
+
+function nextPage() {
+	const url = "/index.php/views/users?index=" + (index + 1);
+	location.pathname = url;
+}
+
+function previousPage() {
+	if (index > 0) {
+		const url = "/index.php/views/users?index=" + (index - 1);
+		location.pathname = url;
+	}
+}
+
 function removeUser(userId) {}
 
-function retrieveUsers() {
+function retrieveUsers(index) {
 	const url = "/api/user/retrieve_users";
 	const token = sessionStorage.getItem("token");
 
@@ -47,9 +76,6 @@ function retrieveUsers() {
 		goToLogin();
 		return;
 	}
-
-	const query = new URLSearchParams(window.location.search);
-	const index = query.get("index") ?? 0;
 
 	const data = {
 		token,
@@ -66,4 +92,4 @@ function retrieveUsersCb(response) {
 	}
 }
 
-window.onload = retrieveUsers;
+window.onload = initPage;

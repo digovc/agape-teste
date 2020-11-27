@@ -23,6 +23,18 @@
             </tbody>
         </table>
 
+        <button class="btn btn-default" click="newUser()">
+            Novo
+        </button>
+
+        <button id="previousButton" class="btn btn-default" click="previousPage()">
+            Página anterior
+        </button>
+
+        <button id="nextButton" class="btn btn-default" click="nextPage()">
+            Próxima página
+        </button>
+
         <button class="btn btn-default" click="logoff()">
             Sair
         </button>
