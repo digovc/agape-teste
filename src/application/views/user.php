@@ -12,6 +12,8 @@
             <br />
             <input id="emailInput" type="email" class="form-control" placeholder="Email" />
             <br />
+            <input id="passwordInput" type="password" class="form-control" placeholder="Senha" />
+            <br />
             <input id="isEnabledInput" type="checkbox" class="form-control" placeholder="Ativo" />
             <br />
             <input id="isAdminInput" type="checkbox" class="form-control" placeholder="Administrador" />

@@ -5,6 +5,32 @@ function goToUsers() {
 	location.pathname = "/index.php/views/users";
 }
 
+function initPage() {
+	if (accountId != "new" && accountId > 0) {
+		const url = "index.php/api/user/retrieve_user";
+		const token = sessionStorage.getItem("token");
+
+		const data = {
+			token,
+			accountId,
+		};
+
+		$.post(url, data).done(retrieveCb).fail(showError);
+	}
+}
+
+function retrieveCb(response) {
+	if (response.ok) {
+		const account = response.account;
+		$(".nameInput").value(account.name);
+		$(".loginInput").value(account.login);
+		$(".emailInput").value(account.email);
+		$(".passwordInput").value(account.password);
+		$(".isEnabledInput").value(account.isEnabled);
+		$(".isAdminInput").value(account.isAdmin);
+	}
+}
+
 function save() {
 	const name = $(".nameInput").value();
 
@@ -24,6 +50,12 @@ function save() {
 		showError("Email inválido.");
 	}
 
+	const password = $(".passwordInput").value();
+
+	if (password == null || password.length < 1) {
+		showError("Senha inválida.");
+	}
+
 	const isEnabled = $(".isEnabledInput").value();
 	const isAdmin = $(".isAdminInput").value();
 	const id = accountId;
@@ -32,16 +64,17 @@ function save() {
 		id = 0;
 	}
 
-	const account = {
+	const data = {
 		id,
 		name,
 		login,
 		email,
+		password,
 		isEnabled,
 		isAdmin,
 	};
 
-	$.post(url, account).done(saveCb).fail(showError);
+	$.post(url, data).done(saveCb).fail(showError);
 }
 
 function saveCb(response) {
@@ -50,3 +83,5 @@ function saveCb(response) {
 		location.pathname = "/index.php/views/users";
 	}
 }
+
+window.onload = initPage;
