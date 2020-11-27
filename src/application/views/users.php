@@ -3,7 +3,7 @@
 <div class="container">
     <div class="center">
         <div class="image"></div>
-        
+
         <br />
 
         <table>
@@ -18,6 +18,9 @@
             </tr>
         </table>
 
+        <button class="btn btn-default" click="logoff()">
+            Sair
+        </button>
     </div>
 </div>
 
