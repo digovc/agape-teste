@@ -9,6 +9,29 @@ class Session_model extends Model_base
     public $token;
     public $isAdmin;
 
+    public function check()
+    {
+        $request = $this->get_json_request();
+
+        if (is_null($request->token)) {
+            $this->error('Invalid token.');
+        }
+
+        $this->load->database();
+        $this->db->where('token', $request->token);
+        $query = $this->db->get('session');
+        $rows = $query->result();
+
+        if (is_null($rows) || count($rows) < 1) {
+            $this->error('Invalid token.');
+        }
+
+        $sessionRow = $rows[0];
+
+        $response = array('ok' => true, 'isAdmin' => $sessionRow->isAdmin, 'accountId' => $sessionRow->accountId);
+        $this->send_json_response($response);
+    }
+
     public function login()
     {
         $request = $this->get_json_request();
