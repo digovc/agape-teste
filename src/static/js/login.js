@@ -30,5 +30,5 @@ function loginCb(response) {
 }
 
 function goToRecovery() {
-	location.pathname = "/index.php/views/recovery";
+	location.pathname = "/index.php/views/recovery_step_1";
 }

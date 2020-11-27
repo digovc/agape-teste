@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/static/css/recovery.css">
+<link rel="stylesheet" href="/static/css/recovery_step_2.css">
 
 <div class="container">
     <div class="center">
@@ -19,4 +19,4 @@
     </div>
 </div>
 
-<script src="/static/js/recovery.js"></script>
+<script src="/static/js/recovery_step_2.js"></script>
