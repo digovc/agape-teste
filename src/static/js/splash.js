@@ -4,4 +4,4 @@ function goToLoginLazy() {
 	}, 1500);
 }
 
-window.onload = () => goToLoginLazy();
+window.onload = goToLoginLazy;

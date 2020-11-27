@@ -7,15 +7,20 @@
         <br />
 
         <table>
-            <tr>
-                <th>Nome</th>
-                <th>Login</th>
-                <th>Email</th>
-                <th>Ativo</th>
-                <th>Administrador</th>
-                <th>Editar</th>
-                <th>Remover</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Login</th>
+                    <th>Email</th>
+                    <th>Ativo</th>
+                    <th>Administrador</th>
+                    <th>Editar</th>
+                    <th>Remover</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
         </table>
 
         <button class="btn btn-default" click="logoff()">
