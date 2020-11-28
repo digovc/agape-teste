@@ -56,6 +56,11 @@ class Session_model extends Model_base
         }
 
         $accountRow = $rows[0];
+
+        if (!$accountRow->isEnabled) {
+            $this->error('Usuário não está ativo.');
+        }
+
         $this->db->delete('session', array('accountId' => $accountRow->id));
 
         $token = bin2hex(random_bytes(32));

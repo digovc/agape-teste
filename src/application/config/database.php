@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'agape_database',
 	'username' => 'agape',
 	'password' => 'GsVfyh9ijn0qPUkWQbI6cNjFmJdkOB2OxG79JiBWANsVS3omaa',
 	'database' => 'agape',
