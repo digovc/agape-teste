@@ -6,20 +6,20 @@ function changePasword() {
 		showError("Token inválido.");
 	}
 
-	const password = $(".passwordInput").value();
+	const password = $("#passwordInput").val();
 
 	if (password == null || password.length < 1) {
 		showError("Senha inválida.");
 	}
 
-	const url = "/api/account/change_password";
+	const url = "/index.php/api/account/change_password";
 
 	const data = {
 		token,
 		password,
 	};
 
-	$.post(url, data).done(recoveryCb).fail(showError);
+	$.post(url, JSON.stringify(data)).done(changePaswordCb).fail(showError);
 }
 
 function changePaswordCb(response) {

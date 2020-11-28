@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/static/css/recovery_step_2.css">
 
-<div class="container">
+<div class="container limited">
     <div class="center">
         <div class="image"></div>
         <br />
@@ -9,10 +9,10 @@
             <input id="passwordInput" type="password" class="form-control" placeholder="Nova senha" />
 
             <br />
-            <button class="btn btn-default" click="changePasword()">
+            <button class="btn btn-default" onclick="changePasword()">
                 Salvar
             </button>
-            <button class="btn btn-default" click="goToLogin()">
+            <button class="btn btn-default" onclick="goToLogin()">
                 Cancelar
             </button>
         </div>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-require_once('View_Controler_Base.php');
+require_once('views/View_Controler_Base.php');
 
 class Splash extends View_Controler_Base
 {

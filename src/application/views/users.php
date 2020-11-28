@@ -6,7 +6,7 @@
 
         <br />
 
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>Nome</th>
@@ -14,7 +14,7 @@
                     <th>Email</th>
                     <th>Ativo</th>
                     <th>Administrador</th>
-                    <th>Editar</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody id="tbody">
@@ -22,21 +22,31 @@
             </tbody>
         </table>
 
-        <button class="btn btn-default" click="newUser()">
-            Novo
-        </button>
+        <br />
 
-        <button id="previousButton" class="btn btn-default" click="previousPage()">
-            Página anterior
-        </button>
+        <div class="btn-group">
+            <button id="previousButton" class="btn btn-default" disabled onclick="previousPage()">
+                Página anterior
+            </button>
 
-        <button id="nextButton" class="btn btn-default" click="nextPage()">
-            Próxima página
-        </button>
+            <button id="nextButton" class="btn btn-default" disabled onclick="nextPage()">
+                Próxima página
+            </button>
+        </div>
 
-        <button class="btn btn-default" click="logoff()">
-            Sair
-        </button>
+        <br />
+        <br />
+
+        <div class="btn-group">
+            <button class="btn btn-default" onclick="newUser()">
+                Novo
+            </button>
+            <button class="btn btn-default" onclick="logoff()">
+                Sair
+            </button>
+
+        </div>
+
     </div>
 </div>
 

@@ -5,7 +5,9 @@ abstract class Model_base extends CI_Model
 {
     protected function error($message)
     {
-        show_error($message, 400, 'Error');
+        $response = array('ok' => false, 'message' => $message);
+        $this->send_json_response($response);
+        http_response_code(400);
         exit(1);
     }
 

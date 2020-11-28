@@ -14,7 +14,7 @@ class Session_model extends Model_base
         $request = $this->get_json_request();
 
         if (is_null($request->token)) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         $this->load->database();
@@ -23,7 +23,7 @@ class Session_model extends Model_base
         $rows = $query->result();
 
         if (is_null($rows) || count($rows) < 1) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         $sessionRow = $rows[0];
@@ -37,15 +37,11 @@ class Session_model extends Model_base
         $request = $this->get_json_request();
 
         if (is_null($request->login)) {
-            $this->error('Invalid login or password.');
-        }
-
-        if (is_null($request->login)) {
-            $this->error('Invalid login.');
+            $this->error('Login inválido.');
         }
 
         if (is_null($request->password)) {
-            $this->error('Invalid password.');
+            $this->error('Senha inválida.');
         }
 
         $this->load->database();
@@ -56,7 +52,7 @@ class Session_model extends Model_base
         $rows = $query->result();
 
         if (is_null($rows) || count($rows) < 1) {
-            $this->error('Account not found.');
+            $this->error('Usuário não encontrado.');
         }
 
         $accountRow = $rows[0];

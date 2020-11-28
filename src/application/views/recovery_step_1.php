@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/static/css/recovery_step_1.css">
 
-<div class="container">
+<div class="container limited">
     <div class="center">
         <div class="image"></div>
         <br />
@@ -9,11 +9,11 @@
             <input id="emailInput" type="email" class="form-control" placeholder="Email" />
             <br />
             
-            <button type="submit" class="btn btn-default" click="recovery()">
+            <button type="submit" class="btn btn-default" onclick="recovery()">
                 Recuperar a senha
             </button>
             
-            <button type="button" class="btn btn-default" click="goToLogin()">
+            <button type="button" class="btn btn-default" onclick="goToLogin()">
                 Cancelar
             </button>
         </div>

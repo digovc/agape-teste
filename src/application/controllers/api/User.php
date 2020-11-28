@@ -5,19 +5,19 @@ class User extends CI_Controller
 {
     public function retrieve_user()
     {
-        $this->load->model('account_model');
-        $this->account_model->retrieve_user();
+        $this->load->model('user_model');
+        $this->user_model->retrieve_user();
     }
 
     public function retrieve_users()
     {
-        $this->load->model('account_model');
-        $this->account_model->retrieve_users();
+        $this->load->model('user_model');
+        $this->user_model->retrieve_users();
     }
 
     public function save()
     {
-        $this->load->model('account_model');
-        $this->account_model->save();
+        $this->load->model('user_model');
+        $this->user_model->save();
     }
 }

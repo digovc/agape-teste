@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/static/css/user.css">
 
-<div class="container">
+<div class="container limited">
     <div class="center">
         <div class="image"></div>
         <br />
@@ -14,16 +14,20 @@
             <br />
             <input id="passwordInput" type="password" class="form-control" placeholder="Senha" />
             <br />
-            <input id="isEnabledInput" type="checkbox" class="form-control" placeholder="Ativo" />
+            <input id="isEnabledInput" type="checkbox" class="form-check-input" placeholder="Ativo" />
+            <label class="form-check-label" for="isEnabledInput">Ativo</label>
             <br />
-            <input id="isAdminInput" type="checkbox" class="form-control" placeholder="Administrador" />
+            <input id="isAdminInput" type="checkbox" class="form-check-input" placeholder="Administrador" />
+            <label class="form-check-label" for="isAdminInput">Administrador</label>
+            <br />
             <br />
 
-            <button type="submit" class="btn btn-default" click="save()">
+            
+            <button type="submit" class="btn btn-default" onclick="save()">
                 Salvar
             </button>
 
-            <button type="button" class="btn btn-default" click="goToUsers()">
+            <button type="button" class="btn btn-default" onclick="goToUsers()">
                 Cancelar
             </button>
         </div>

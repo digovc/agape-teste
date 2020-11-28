@@ -13,11 +13,11 @@ class Recovery_model extends Model_base
         $request = $this->get_json_request();
 
         if (is_null($request->token)) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         if (is_null($request->password)) {
-            $this->error('Invalid password.');
+            $this->error('Senha inválida.');
         }
 
         $this->load->database();
@@ -26,7 +26,7 @@ class Recovery_model extends Model_base
         $rows = $query->result();
 
         if (is_null($rows) || count($rows) < 1) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         $recoveryRow = $rows[0];
@@ -45,7 +45,7 @@ class Recovery_model extends Model_base
         $request = $this->get_json_request();
 
         if (is_null($request->email)) {
-            $this->error('Invalid email.');
+            $this->error('Email inválido.');
         }
 
         $this->load->database();
@@ -55,7 +55,7 @@ class Recovery_model extends Model_base
         $rows = $query->result();
 
         if (is_null($rows) || count($rows) < 1) {
-            $this->error('Account not found.');
+            $this->error('Usuário não encontrado.');
         }
 
         $accountRow = $rows[0];
@@ -75,7 +75,7 @@ class Recovery_model extends Model_base
         $this->email->to($accountRow->email);
 
         $line1 = '<div>Seu login é <b>' . $accountRow->login . '</b>.</div>';
-        $line2 = '<div>Para recuperar a sua senha <a href="http://agapa_teste.ddns.net/index.php/views/recovery_step_2?token=' . $token . '">clique aqui</a>.</div>';
+        $line2 = '<div>Para recuperar a sua senha <a href="http://agapa_teste.ddns.net/index.php/views/recoverystep2?token=' . $token . '">clique aqui</a>.</div>';
 
         $this->email->subject('Recuperação de senha.');
         $this->email->message($line1 . $line2);

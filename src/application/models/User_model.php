@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 require_once("Model_base.php");
 
-class Account_model extends Model_base
+class User_model extends Model_base
 {
     public $name;
     public $email;
@@ -17,11 +17,11 @@ class Account_model extends Model_base
         $request = $this->get_json_request();
 
         if (is_null($request->token)) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         if ($request->accountId < 1) {
-            $this->error('Invalid user.');
+            $this->error('Usuário inválido.');
         }
 
         $this->load->database();
@@ -30,18 +30,18 @@ class Account_model extends Model_base
         $rows = $query->result();
 
         if (is_null($rows) || count($rows) < 1) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         $sessionRow = $rows[0];
 
         if ($sessionRow->isAdmin || $sessionRow->accountId == $request->accountId) {
-            $this->db->where('id', $sessionRow->accountId);
+            $this->db->where('id', $request->accountId);
             $query = $this->db->get('account');
             $rows = $query->result();
 
             if (is_null($rows) || count($rows) < 1) {
-                $this->error('Invalid account.');
+                $this->error('Usuário inválido.');
             }
 
             $accountRow = $rows[0];
@@ -55,7 +55,7 @@ class Account_model extends Model_base
         $request = $this->get_json_request();
 
         if (is_null($request->token)) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         if (is_null($request->index)) {
@@ -68,7 +68,7 @@ class Account_model extends Model_base
         $rows = $query->result();
 
         if (is_null($rows) || count($rows) < 1) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         $sessionRow = $rows[0];
@@ -78,6 +78,31 @@ class Account_model extends Model_base
         } else {
             $this->retrieve_only_self_user($sessionRow);
         }
+    }
+
+    private function retrieve_users_with_admin($request)
+    {
+        $limit = 10;
+        $offset = $request->index * $limit;
+        $query = $this->db->get('account', $limit, $offset);
+        $rows = $query->result();
+        $response = array('ok' => true, 'users' => $rows);
+        $this->send_json_response($response);
+    }
+
+    private function retrieve_only_self_user($sessionRow)
+    {
+        $this->db->where('id', $sessionRow->accountId);
+        $query = $this->db->get('account');
+        $rows = $query->result();
+
+        if (is_null($rows) || count($rows) < 1) {
+            $this->error('Usuário inválido.');
+        }
+
+        $accountRow = $rows[0];
+        $response = array('ok' => true, 'users' => [$accountRow]);
+        $this->send_json_response($response);
     }
 
     public function save()
@@ -90,37 +115,41 @@ class Account_model extends Model_base
         $rows = $query->result();
 
         if (is_null($rows) || count($rows) < 1) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         if (is_null($request->token)) {
-            $this->error('Invalid token.');
+            $this->error('Token inválido.');
         }
 
         if (is_null($request->user)) {
-            $this->error('Invalid request.');
+            $this->error('Solicitação inválida.');
         }
 
         if (is_null($request->user->name)) {
-            $this->error('Invalid name.');
+            $this->error('Nome inválido.');
         }
 
         if (is_null($request->user->login)) {
-            $this->error('Invalid login.');
+            $this->error('Login inválido.');
         }
 
         if (is_null($request->user->email)) {
-            $this->error('Invalid email.');
+            $this->error('Email inválido.');
         }
 
         if (is_null($request->user->password)) {
-            $this->error('Invalid password.');
+            $this->error('Senha inválida.');
         }
 
         $sessionRow = $rows[0];
 
         if (!$sessionRow->isAdmin && $request->user->id != $sessionRow->accountId) {
-            $this->error('No admin users only change your account.');
+            $this->error('Usuários não administradores podem alterar apenas sua própria conta.');
+        }
+
+        if (!$sessionRow->isAdmin && $request->user->isAdmin) {
+            $this->error('Usuários não administradores não podem criar/alterar usuários administradores.');
         }
 
         if ($request->user->id > 0) {
@@ -130,31 +159,6 @@ class Account_model extends Model_base
         }
 
         $response = array('ok' => true, 'message' => 'User salved.');
-        $this->send_json_response($response);
-    }
-
-    private function retrieve_users_with_admin($request)
-    {
-        $limit = 10;
-        $offset = $request->index * $limit;
-        $query = $this->db->get('account', $offset, $limit);
-        $rows = $query->result();
-        $response = array('ok' => true, 'accounts' => $rows);
-        $this->send_json_response($response);
-    }
-
-    private function retrieve_only_self_user($sessionRow)
-    {
-        $this->db->where('id', $sessionRow->accountId);
-        $query = $this->db->get('account');
-        $rows = $query->result();
-
-        if (is_null($rows) || count($rows) < 1) {
-            $this->error('Invalid account.');
-        }
-
-        $accountRow = $rows[0];
-        $response = array('ok' => true, 'accounts' => [$accountRow]);
         $this->send_json_response($response);
     }
 }

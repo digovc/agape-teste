@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/static/css/login.css">
 
-<div class="container">
+<div class="container limited">
     <div class="center">
         <div class="image"></div>
         <br />
@@ -11,10 +11,10 @@
             <input id="passwordInput" type="password" class="form-control" placeholder="Senha" />
             <br />
 
-            <button class="btn btn-default" click="login()">
+            <button class="btn btn-default" onclick="login()">
                 Entrar
             </button>
-            <button class="btn btn-default" click="goToRecovery()">
+            <button class="btn btn-default" onclick="goToRecovery()">
                 Recuperar senha
             </button>
         </div>
