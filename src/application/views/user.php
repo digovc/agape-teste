@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/static/css/user.css">
-
 <div class="container limited">
     <div class="center">
         <div class="image"></div>

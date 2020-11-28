@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/static/css/splash.css">
-
 <div class="container">
     <div class="image"></div>
 </div>
